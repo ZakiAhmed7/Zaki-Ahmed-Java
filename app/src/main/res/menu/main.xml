@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/icon_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/action_weather"
+        android:icon="@drawable/icon_whether"
+        android:title="Whether" />
+
+    <item
+        android:id="@+id/action_map"
+        android:icon="@drawable/icon_location"
+        android:title="Location" />
+
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/icon_profile"
+        android:title="Profile" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/icon_settings"
+        android:orderInCategory="100"
+        android:title="Settings" />
+
+
+</menu>
