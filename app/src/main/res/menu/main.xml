@@ -18,9 +18,9 @@
         android:title="Location" />
 
     <item
-        android:id="@+id/action_profile"
-        android:icon="@drawable/icon_profile"
-        android:title="Profile" />
+        android:id="@+id/action_news"
+        android:icon="@drawable/icon_newspaper"
+        android:title="News" />
 
     <item
         android:id="@+id/action_settings"

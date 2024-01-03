@@ -1,4 +1,4 @@
-package com.example.zakiahmedjava.Profile;
+package com.example.zakiahmedjava.Settings;
 
 import android.os.Bundle;
 
@@ -10,22 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.zakiahmedjava.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ProfileFragment extends Fragment {
-
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

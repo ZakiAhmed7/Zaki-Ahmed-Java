@@ -26,7 +26,6 @@ public class HomeFragment extends Fragment {
         WebscreenFragment webscreenFragment = new WebscreenFragment();
         Bundle bundle = new Bundle();
 
-
         linkedInButton.setOnClickListener(v -> {
             bundle.putString("URL","https://www.linkedin.com/in/zakiahmed7/");
             webscreenFragment.setArguments(bundle);

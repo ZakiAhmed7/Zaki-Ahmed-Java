@@ -4,22 +4,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Profile.ProfileFragment">
+    tools:context=".Settings.ProfileFragment"
+    android:background="@color/white">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
-        <TextView
+        <View
+            android:id="@+id/profile_background_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="200dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="PROFILE FRAGMENT"
-            android:textSize="22sp"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/material_dynamic_neutral_variant60"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_pic"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="125dp"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton"
+            android:src="@drawable/linkedin_profile_picture"/>
+
+        <TextView
+            android:id="@+id/profile_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textFontWeight="600"
+            android:text="Zaki Ahmed Syed"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/profile_pic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
