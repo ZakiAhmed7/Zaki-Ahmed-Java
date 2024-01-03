@@ -75,14 +75,17 @@ public class TechnologyFragment extends Fragment implements RecyclerViewInterfac
 
     @Override
     public void onItemClick(int position) {
+
         Bundle bundle = new Bundle();
-        bundle.putString("URL", newsList.get(position).getUrlToImage());
+        bundle.putString("URL", newsList.get(position).getUrl());
+
         WebscreenFragment webscreenFragment = new WebscreenFragment();
         webscreenFragment.setArguments(bundle);
+
         getParentFragmentManager()
                 .beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.fragmentContainerView, new WebscreenFragment())
+                .add(R.id.fragmentContainerView, webscreenFragment)
                 .addToBackStack("newsDetails")
                 .commit();
     }
