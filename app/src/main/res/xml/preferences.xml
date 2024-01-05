@@ -1,27 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <CheckBoxPreference
-        android:id="@+id/pref_checkbox"
-        android:defaultValue="false"
-        android:key="check_box_preference_1"
-        android:title="Check box preference" />
-    <EditTextPreference
-        android:id="@+id/pref_et"
-        android:defaultValue="Default value"
-        android:key="edit_text_preference_1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="Edit text preference" />
-    <SwitchPreference
-        android:id="@+id/pref_switch"
-        android:defaultValue="false"
-        android:key="switch_preference_1"
-        android:title="Switch preference" />
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
     <PreferenceCategory
-        android:icon="@drawable/linkedin_profile_picture"
+        android:title="Edit profile"
+        android:icon="@drawable/icon_profile" >
+
+        <EditTextPreference
+            android:id="@+id/etpEditName"
+            android:title="Name"
+            android:key="prefName"
+            android:summary="@string/app_name"/>
+
+        <EditTextPreference
+            android:id="@+id/etpEmail"
+            android:defaultValue="Email"
+            android:key="prefEmail"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Email"
+            android:summary="email"/>
+
+        <ListPreference
+            android:title="Category"
+            android:entries="@array/category"
+            android:entryValues="@array/category"
+            android:key="prefCategory"
+            android:summary="Not set"
+            android:defaultValue="Not set"
+            android:dialogTitle="Select Category" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:icon="@drawable/icon_z"
         android:key="@string/app_name"
-        android:title="Preference category">
+        android:title="General">
+
+        <SwitchPreference
+            android:title="Dark mode"
+            android:summaryOff="switch to turn on dark theme"
+            android:summaryOn="Switch to turn on light theme"
+            android:key="switchTheme" />
+
+        <CheckBoxPreference
+            android:title="Like the app"
+            android:summary="check if you like the application"
+            android:defaultValue="false"
+            android:key="checkBoxLike" />
 
     </PreferenceCategory>
 </PreferenceScreen>

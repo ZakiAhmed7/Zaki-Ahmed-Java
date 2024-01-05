@@ -1,7 +1,5 @@
 package com.example.zakiahmedjava;
 
-import com.example.zakiahmedjava.Weather.ApiInterface;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

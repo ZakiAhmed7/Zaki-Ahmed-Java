@@ -2,4 +2,14 @@
     <string name="app_name">Zaki Ahmed Java</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="facebook_app_id">1098788517463514</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">be01234db6c4752550657948450a1003</string>
+    <string-array name="category">
+        <item>Student</item>
+        <item>Employee</item>
+        <item>Entrepreneur</item>
+    </string-array>
+
 </resources>

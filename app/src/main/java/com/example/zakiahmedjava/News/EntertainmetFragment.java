@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.zakiahmedjava.R;
 import com.example.zakiahmedjava.RecyclerViewInterface;
 import com.example.zakiahmedjava.RetrofitBuilder;
+import com.example.zakiahmedjava.WebscreenFragment;
 
 import java.util.ArrayList;
 
@@ -76,6 +77,17 @@ public class EntertainmetFragment extends Fragment implements RecyclerViewInterf
 
     @Override
     public void onItemClick(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("URL", newsList.get(position).getUrl());
 
+        WebscreenFragment webscreenFragment = new WebscreenFragment();
+        webscreenFragment.setArguments(bundle);
+
+        getParentFragmentManager()
+                .beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragmentContainerView, webscreenFragment)
+                .addToBackStack("newsDetails")
+                .commit();
     }
 }
