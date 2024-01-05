@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.example.zakiahmedjava.ApiInterface;
 import com.example.zakiahmedjava.R;
 import com.example.zakiahmedjava.RetrofitBuilder;
 import com.example.zakiahmedjava.databinding.FragmentWeatherBinding;
@@ -23,8 +24,6 @@ import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class WeatherFragment extends Fragment {
@@ -122,6 +121,12 @@ public class WeatherFragment extends Fragment {
 
     private void gotResponseAndDisplayData(Response<WeatherApp> response, String city) {
         WeatherApp responseBody = response.body();
+
+        int temp = (int) Math.round(responseBody.getWeatherAppMain().getTemp());
+        int minTemperature = (int) Math.round(responseBody.getWeatherAppMain().getTemp_min());
+        int maxTemperature = (int) Math.round(responseBody.getWeatherAppMain().getTemp_max());
+
+
         temperature = String.valueOf(responseBody.getWeatherAppMain().getTemp());
         minTemp = String.valueOf(responseBody.getWeatherAppMain().getTemp_min());
         maxTemp = String.valueOf(responseBody.getWeatherAppMain().getTemp_max());
@@ -136,9 +141,9 @@ public class WeatherFragment extends Fragment {
         Log.d("Condition", "0 Index: "+responseBody.getWeather().stream().findFirst().get().getMain());
         weatherCondition = String.valueOf(responseBody.getWeather().stream().findFirst().get().getMain());
 
-        binding.tvTemp.setText(temperature+"C");
-        binding.tvMaxTemp.setText("Max: "+maxTemp+"C");
-        binding.tvMinTemp.setText("Min: "+minTemp+"C");
+        binding.tvTemp.setText(temp+"°C");
+        binding.tvMaxTemp.setText("Max: "+maxTemperature+"°C");
+        binding.tvMinTemp.setText("Min: "+minTemperature+"°C");
         binding.tvWindSpeed.setText(windSpeed+" m/s");
         binding.tvSunRise.setText(sunRise);
         binding.tvSunSet.setText(sunSet);
@@ -160,7 +165,7 @@ public class WeatherFragment extends Fragment {
         }
         else if (weatherCondition == "Partly Clouds" || weatherCondition == "Clouds" || weatherCondition == "Overcast" || weatherCondition == "Mist" || weatherCondition == "Foggy") {
             binding.weatherFrameLayout.setBackgroundResource(R.drawable.colud_background);
-//            binding.weatherConstraintLayout.setBackgroundResource(R.drawable.colud_background);
+            binding.weatherConstraintLayout.setBackgroundResource(R.drawable.colud_background);
             binding.animatedImage.setAnimation(R.raw.cloud);
         }
         else if (weatherCondition == "Light Rain" || weatherCondition == "Drizzle" || weatherCondition == "Moderate Rain" || weatherCondition == "Showers" || weatherCondition == "Heavy Rain") {

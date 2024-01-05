@@ -1,6 +1,7 @@
-package com.example.zakiahmedjava.Weather;
+package com.example.zakiahmedjava;
 
 import com.example.zakiahmedjava.News.MainNewsModel;
+import com.example.zakiahmedjava.Weather.WeatherApp;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

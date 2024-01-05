@@ -6,19 +6,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.zakiahmedjava.R;
 import com.example.zakiahmedjava.RecyclerViewInterface;
 import com.example.zakiahmedjava.RetrofitBuilder;
-import com.example.zakiahmedjava.Weather.ApiInterface;
-import com.google.android.gms.common.AccountPicker;
+import com.example.zakiahmedjava.ApiInterface;
+import com.example.zakiahmedjava.WebscreenFragment;
 
 import java.util.ArrayList;
 
@@ -90,6 +88,17 @@ public class GeneralNewsFragment extends Fragment implements RecyclerViewInterfa
 
     @Override
     public void onItemClick(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("URL", newsList.get(position).getUrl());
 
+        WebscreenFragment webscreenFragment = new WebscreenFragment();
+        webscreenFragment.setArguments(bundle);
+
+        getParentFragmentManager()
+                .beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragmentContainerView, webscreenFragment)
+                .addToBackStack("newsDetails")
+                .commit();
     }
 }
