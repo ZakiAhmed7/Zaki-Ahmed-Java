@@ -25,15 +25,15 @@ public class SettingsFragment extends Fragment {
                     .beginTransaction()
                     .setReorderingAllowed(true)
                     .add(R.id.fragmentContainerView, new ProfileFragment())
-                    .addToBackStack("settingsFragment")
+                    .addToBackStack("profileFragment")
                     .commit();
         });
 
         binding.settingsLayout.setOnClickListener(v -> {
             getParentFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fragmentContainerView, new ShowSettingsFragment())
                     .setReorderingAllowed(true)
+                    .replace(R.id.fragmentContainerView, new ShowSettingsFragment())
                     .addToBackStack("showSettingsFragment")
                     .commit();
         });
