@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragmentView = findViewById(R.id.fragmentContainerView);
-        bottomAppBar = findViewById(R.id.bottomAppBar);
-        bottomNavigationView = findViewById(R.id.bottomNavigationBar);
+        initViews();
+
+        navControllerCode();
 
         bottomAppBar.setBackgroundTint(ColorStateList.valueOf(Color.alpha(blackColor)));
 
@@ -58,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void navControllerCode() {
+
+    }
+
+    private void initViews() {
+        fragmentView = findViewById(R.id.fragmentContainerView);
+        bottomAppBar = findViewById(R.id.bottomAppBar);
+        bottomNavigationView = findViewById(R.id.bottomNavigationBar);
+    }
 
 
     public void replaceFragment(Fragment fragment) {

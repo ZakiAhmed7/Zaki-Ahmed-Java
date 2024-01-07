@@ -1,5 +1,7 @@
 package com.example.zakiahmedjava.Settings;
 
+import static com.example.zakiahmedjava.R.id.fragmentContainerView;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -19,18 +21,38 @@ public class ShowSettingsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_show_settings, container);
-        binding = FragmentShowSettingsBinding.bind(view);
+        binding = FragmentShowSettingsBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String name = sharedPreferences.getString("", "");
-        String email = sharedPreferences.getString("", "");
-        String category = sharedPreferences.getString("", "");
-        boolean mode = sharedPreferences.getBoolean("", false);
-        boolean liked = sharedPreferences.getBoolean("",false);
+        String name = sharedPreferences.getString("prefName", "");
+        String email = sharedPreferences.getString("prefEmail", "");
+        String category = sharedPreferences.getString("prefCategory", "");
+        boolean mode = sharedPreferences.getBoolean("switchTheme", false);
+        boolean liked = sharedPreferences.getBoolean("checkBoxLike",false);
+
+        binding.etSName.setText("Name: "+name);
+        binding.etSEmail.setText("Email: "+email);
+        binding.etSCategory.setText("Category: "+category);
+        if (mode)
+            binding.etSDarkMode.setText("Applied Theme: Dark Mode");
+        else
+            binding.etSDarkMode.setText("Applied Theme: Light Mode");
+
+        if (liked)
+            binding.etSLiked.setText("You liked the application");
+        else
+            binding.etSLiked.setText("You did not like the application");
+
 
         binding.fabEdit.setOnClickListener(v -> {
 
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .replace(R.id.fragmentContainerView, new SettingsPreferenceFragment())
+                    .commit();
         });
         return view;
     }
