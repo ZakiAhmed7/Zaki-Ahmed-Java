@@ -13,9 +13,13 @@
         android:title="Whether" />
 
     <item
-        android:id="@+id/action_map"
-        android:icon="@drawable/icon_location"
-        android:title="Location" />
+        android:title=""
+        android:enabled="true"
+        />
+<!--        android:id="@+id/action_map"-->
+<!--        android:icon="@drawable/icon_location"-->
+<!--        android:title="Location" -->
+<!--        />-->
 
     <item
         android:id="@+id/action_news"

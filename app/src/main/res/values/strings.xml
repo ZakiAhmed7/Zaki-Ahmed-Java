@@ -6,6 +6,8 @@
     <string name="facebook_app_id">1098788517463514</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">be01234db6c4752550657948450a1003</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string-array name="category">
         <item>Student</item>
         <item>Employee</item>
