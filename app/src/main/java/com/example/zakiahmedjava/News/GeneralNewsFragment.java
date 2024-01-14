@@ -80,7 +80,6 @@ public class GeneralNewsFragment extends Fragment implements RecyclerViewInterfa
         newsAdapter = new NewsRecyclerViewAdapter(getContext(), newsList, this);
         recyclerView.setAdapter(newsAdapter);
     }
-
     private void initViews(View view) {
         recyclerView = view.findViewById(R.id.recyclerViewGeneral);
         tvError = view.findViewById(R.id.tv_error_general);
@@ -94,7 +93,7 @@ public class GeneralNewsFragment extends Fragment implements RecyclerViewInterfa
         WebscreenFragment webscreenFragment = new WebscreenFragment();
         webscreenFragment.setArguments(bundle);
 
-        getParentFragmentManager()
+        getChildFragmentManager()
                 .beginTransaction()
                 .setReorderingAllowed(true)
                 .add(R.id.fragmentContainerView, webscreenFragment)
