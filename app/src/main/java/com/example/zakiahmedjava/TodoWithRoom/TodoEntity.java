@@ -29,6 +29,14 @@ public class TodoEntity {
         this.isCompleted = isCompleted;
     }
 
+    public int getTodoId() {
+        return todoId;
+    }
+
+    public void setTodoId(int todoId) {
+        this.todoId = todoId;
+    }
+
     public String getTodoHeadline() {
         return todoHeadline;
     }

@@ -65,7 +65,7 @@ public class MainTodoFragment extends Fragment implements RecyclerViewInterface 
     private TodoDatabase todoDatabase;
     protected FloatingActionButton fab;
     protected Toolbar toolbar;
-    protected List<TodoEntity> todoList;
+    protected List<TodoEntity> todoList, filteredList;
     protected TodoListRecyclerViewAdapter customAdapter;
     protected ImageView ivCurrent, ivCompleted;
     protected TextView tvCurrent, tvCompleted;
@@ -75,6 +75,7 @@ public class MainTodoFragment extends Fragment implements RecyclerViewInterface 
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         todoList = new ArrayList<TodoEntity>();
+        filteredList = new ArrayList<TodoEntity>();
 
         RoomDatabase.Callback dbCallBack = new RoomDatabase.Callback() {
             @Override
@@ -177,7 +178,8 @@ public class MainTodoFragment extends Fragment implements RecyclerViewInterface 
             @Override
             public void run() {
                 // Background task
-                todoList = todoDatabase.getTodoDAO().getAllTodos();
+                todoList = todoDatabase.getTodoDAO().getCurrentTodos();
+                filterData();
                 //on finishing task
                 handler.post(new Runnable() {
                     @Override
@@ -237,5 +239,12 @@ public class MainTodoFragment extends Fragment implements RecyclerViewInterface 
                 .beginTransaction()
                 .replace(R.id.sideFrameLayout, fragment, null)
                 .commit();
+    }
+
+    protected void filterData() {
+        for (TodoEntity todo: todoList) {
+            if (!todo.isCompleted())
+                filteredList.add(todo);
+        }
     }
 }

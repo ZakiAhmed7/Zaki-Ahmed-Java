@@ -17,6 +17,9 @@ public interface TodoDAO {
     @Query("SELECT * FROM Todos WHERE completed = 1")
     List<TodoEntity> getCompletedTodo();
 
+    @Query("SELECT * FROM Todos WHERE completed = 0")
+    List<TodoEntity> getCurrentTodos();
+
     @Query("SELECT * FROM Todos WHERE id==:todoID")
     TodoEntity getTodoDetails(int todoID);
     @Query("SELECT * FROM Todos")
