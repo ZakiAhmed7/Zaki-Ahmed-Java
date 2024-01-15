@@ -28,7 +28,6 @@ public class TodoListRecyclerViewAdapter extends RecyclerView.Adapter<TodoListRe
     protected Context context;
     protected List<TodoEntity> todoList;
     protected RecyclerViewInterface recyclerViewInterface;
-
     protected TodoDatabase todoDatabase;
 
     public TodoListRecyclerViewAdapter(Context context, List<TodoEntity> todoList, RecyclerViewInterface recyclerViewInterface) {
@@ -39,7 +38,8 @@ public class TodoListRecyclerViewAdapter extends RecyclerView.Adapter<TodoListRe
 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        todoDatabase = Room.databaseBuilder(context, TodoDatabase.class, "Todos").build();
+        todoDatabase = Room.databaseBuilder(context, TodoDatabase.class, "Todos")
+                .build();
         View view = LayoutInflater.from(context).inflate(R.layout.todo_item_layout, parent, false);
         return new MyViewHolder(view, recyclerViewInterface);
     }
@@ -51,10 +51,11 @@ public class TodoListRecyclerViewAdapter extends RecyclerView.Adapter<TodoListRe
         // first removing from list if the check box is selected.
         // Check for th check box and then update as it is.
 
+
         holder.cbIsCompleted.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-//                holder.cbIsCompleted.setChecked(true);
-                updateListInDatabase(position);
+                Log.d("position", "ID: " +todoList.get(position).getTodoId());
+                updateListInDatabase(todoList.get(position).getTodoId());
             } else
                 Toast.makeText(context, "Not checked", Toast.LENGTH_SHORT).show();
         });
@@ -63,13 +64,14 @@ public class TodoListRecyclerViewAdapter extends RecyclerView.Adapter<TodoListRe
     }
 
 
-    private void updateListInDatabase(int position) {
+    private void updateListInDatabase(int itemID) {
+        Log.d("position", " " + itemID);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 // Background task
-                todoDatabase.getTodoDAO().upsertTodo(todoList.get(position));
+                todoDatabase.getTodoDAO().upsertTodo(todoList.get(itemID));
             }
         });
         Toast.makeText(context, "update Done", Toast.LENGTH_SHORT).show();
