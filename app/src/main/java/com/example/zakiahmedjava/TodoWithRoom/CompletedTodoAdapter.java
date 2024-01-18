@@ -49,6 +49,18 @@ public class CompletedTodoAdapter extends RecyclerView.Adapter<CompletedTodoAdap
             title = itemView.findViewById(R.id.tvCompletedTodoTitle);
             description = itemView.findViewById(R.id.tvCompletedTodoDescription);
             deleteIcon = itemView.findViewById(R.id.ivTodoDeleteButton);
+
+            deleteIcon.setOnClickListener(v -> {
+                if (recyclerViewInterface != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION)
+                        recyclerViewInterface.onItemClick(position);
+                }
+            });
         }
+
+
+
+
     }
 }
