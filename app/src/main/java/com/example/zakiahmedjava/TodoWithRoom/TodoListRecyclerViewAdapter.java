@@ -55,7 +55,7 @@ public class TodoListRecyclerViewAdapter extends RecyclerView.Adapter<TodoListRe
         holder.cbIsCompleted.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 Log.d("position", "ID: " +todoList.get(position).getTodoId());
-                updateListInDatabase(todoList.get(position).getTodoId());
+                updateListInDatabase(todoList.get(position).getTodoId() , isChecked);
             } else
                 Toast.makeText(context, "Not checked", Toast.LENGTH_SHORT).show();
         });
@@ -64,14 +64,14 @@ public class TodoListRecyclerViewAdapter extends RecyclerView.Adapter<TodoListRe
     }
 
 
-    private void updateListInDatabase(int itemID) {
+    private void updateListInDatabase(int itemID, boolean isChecked) {
         Log.d("position", " " + itemID);
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 // Background task
-                todoDatabase.getTodoDAO().upsertTodo(todoList.get(itemID));
+                todoDatabase.getTodoDAO().updateList(itemID, isChecked);
             }
         });
         Toast.makeText(context, "update Done", Toast.LENGTH_SHORT).show();

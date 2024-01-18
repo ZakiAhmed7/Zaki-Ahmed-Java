@@ -24,5 +24,7 @@ public interface TodoDAO {
     TodoEntity getTodoDetails(int todoID);
     @Query("SELECT * FROM Todos")
     List<TodoEntity> getAllTodos();
+    @Query("UPDATE Todos SET completed = :changedValue WHERE id = :position")
+    void updateList(int position, boolean changedValue);
 
 }

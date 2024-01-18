@@ -99,10 +99,7 @@ public class MainTodoFragment extends Fragment implements RecyclerViewInterface 
         View view = inflater.inflate(R.layout.fragment_main_todo, container, false);
 
         initViews(view);
-        AppCompatActivity activityCompat = (AppCompatActivity) getActivity();
-        activityCompat.setSupportActionBar(toolbar);
 
-        toolbar.setBackInvokedCallbackEnabled(true);
 
         getTodoListInBackground();
 
@@ -214,6 +211,11 @@ public class MainTodoFragment extends Fragment implements RecyclerViewInterface 
             @Override
             public void onClick(View v) {
                 // Code to implement
+                Toast.makeText(getContext(), "GET DETAILS", Toast.LENGTH_SHORT).show();
+                AppCompatActivity activityCompat = (AppCompatActivity) getActivity();
+                activityCompat.setSupportActionBar(toolbar);
+
+                toolbar.setBackInvokedCallbackEnabled(true);
             }
         });
 
